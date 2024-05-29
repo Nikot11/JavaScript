@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <ol id="book-list">
+      <li>The Great Gatsby</li>
+      <li>To Kill a Mockingbird</li>
+      <li>1984</li>
+      <li>The Catcher in the Rye</li>
+      <li>Animal Farm</li>
+      <li>Brave New World</li>
+      <li>Fahrenheit 451</li>
+      <li>Lord of the Flies</li>
+      <li>The Hobbit</li>
+      <li>Harry Potter and the Sorcerer's Stone</li>
+    </ol>
+
+    <script>
+      function oddListElements() {
+        const listElem = document.getElementsByTagName("li");
+        for (let i = 1; i <= listElem.length; i += 2) {
+          listElem[i].style.backgroundColor = "lightblue";
+        }
+      }
+
+      oddListElements();
+
+      function changeBookTitle(oldTitle, newTitle) {
+        const orderedList = document.getElementsByTagName("li");
+        for (let i = 0; i < orderedList.length; i++) {
+          if (orderedList[i].innerText === oldTitle) {
+            orderedList[i].innerText = newTitle;
+          }
+        }
+      }
+
+      function removeBook(bookTitle) {
+        const listElem = document.getElementsByTagName("li");
+        let elementToRemove = null;
+        for (let i = 0; i < listELem.length; i++) {
+          if (listElem[i].innerText === bookTitle) {
+            elementToRemove = listElem[i];
+          }
+        }
+        const parentElement = elementToRemove.parentNode;
+        parentElement.removeChild(elementToRemove);
+      }
+    </script>
+  </body>
+</html>
