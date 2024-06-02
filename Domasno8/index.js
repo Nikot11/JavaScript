@@ -1,16 +1,29 @@
-const redBox = document.getElementById("red-box");
-redBox.addEventListener("click", (event) => {
-  console.log("You pressed the red box");
-});
+const fetchPost = async () => {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/users")
+        const data = await response.json()
 
-const greenBox = document.getElementById("green-box");
-greenBox.addEventListener("click", (event) => {
-  console.log("You pressed the green box");
-  event.stopPropagation();
-});
+        const postInfos = document.getElementById("informations")
+        
+    data.forEach((post) => {
+        const name = document.createElement("p")
+        name.textContent = post.name
 
-const blueBox = document.getElementById("blue-box");
-blueBox.addEventListener("click", (event) => {
-  console.log("You pressed the blue box");
-  event.stopPropagation();
-});
+        const phoneNumber = document.createElement("p")
+        phoneNumber.textContent = post.phone
+
+        const nameOfCompany = document.createElement("p")
+        nameOfCompany.textContent = post.company.name
+
+
+        postInfos.appendChild(name)
+        postInfos.appendChild(phoneNumber)
+        postInfos.appendChild(nameOfCompany)
+    })
+        
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+ fetchPost()
