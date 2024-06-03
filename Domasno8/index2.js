@@ -12,7 +12,6 @@ characters.forEach(character => {
   const div = document.createElement('div');
   const image = document.createElement('img');
   const name = document.createElement('h3');
-  const species = document.createElement('h3');
   const status = document.createElement("h3")
   const gender = document.createElement("h3")
   const numberOfEpisodes = document.createElement("h3")
@@ -25,7 +24,6 @@ characters.forEach(character => {
 
   image.src = character.image
   name.innerText = character.name
-  species.innerText = character.species
   status.innerText = character.status
   gender.innerText = character.gender
   numberOfEpisodes.innerHTML = character.episode.length
@@ -42,7 +40,6 @@ characters.forEach(character => {
 
   div.appendChild(image)
   div.appendChild(name)
-  div.appendChild(species)
   div.appendChild(status)
   div.appendChild(gender)
   div.appendChild(numberOfEpisodes)
