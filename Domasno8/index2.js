@@ -16,18 +16,15 @@ characters.forEach(character => {
   const gender = document.createElement("h3")
   const numberOfEpisodes = document.createElement("h3")
 
-
   div.classList = 'card'
   image.classList = 'card-img'
   status.classList = "status"
   
-
   image.src = character.image
   name.innerText = character.name
   status.innerText = character.status
   gender.innerText = character.gender
   numberOfEpisodes.innerHTML = character.episode.length
-
 
   if(character.status === "Alive") {
     div.style.backgroundColor = "green"
@@ -37,7 +34,6 @@ characters.forEach(character => {
     div.style.backgroundColor = "gray"
   }
   
-
   div.appendChild(image)
   div.appendChild(name)
   div.appendChild(status)
