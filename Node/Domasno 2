@@ -1,0 +1,95 @@
+// 1. Сите студенти од Скопје чие име завршува на а и имаат просек над 7, подредени по име (растечки).
+// 2. Сите студенти кои имаат просек над 9 и не се од Скопје, подредени по просек опаѓачки.
+// 3. Првите 3 студенти кои имаат имиња од 5 карактери, подредени по просек.
+// 4. Градови подредени по групна висина на просек.
+// 5. Вкупен просек на студенти чие име завршува на а наспроти сите останати.
+
+const studenti = [
+  { ime: "Bojan", prosek: 7.5, grad: "Skopje" },
+  { ime: "Pero", prosek: 8.3, grad: "Bitola" },
+  { ime: "Janko", prosek: 6.9, grad: "Bitola" },
+  { ime: "Vesna", prosek: 9.2, grad: "Skopje" },
+  { ime: "Elena", prosek: 9.9, grad: "Kumanovo" },
+  { ime: "Vancho", prosek: 10, grad: "Tetovo" },
+  { ime: "Elena", prosek: 9.9, grad: "Ohrid" },
+  { ime: "Ivana", prosek: 6.9, grad: "Kumanovo" },
+  { ime: "Natasha", prosek: 8.1, grad: "Skopje" },
+  { ime: "Stanko", prosek: 7.2, grad: "Strumica" },
+];
+
+// Task 1
+
+const higherThanSevenEndsWithA = studenti.filter((student) => student.ime.slice(-1) === "a" && student.prosek > 7);
+
+const sortedArray = higherThanSevenEndsWithA.sort((a, b) => (a.prosek - b.prosek), 0)
+console.log(sortedArray);
+
+// Task 2
+
+const overNineNotFromSkopje = studenti.filter(
+  (student) => student.prosek > 9 && student.grad != "Skopje"
+);
+
+const sortArray = overNineNotFromSkopje.sort((a, b) => b.prosek - a.prosek);
+//console.log(sortArray);
+
+// Task 3
+
+const fiveLetterNames = studenti.filter((student) => student.ime.length === 5);
+const n = 3;
+const firstThree = fiveLetterNames.slice(0, n);
+
+const sortedArrayFirstThree = firstThree.sort((a, b) => a.prosek - b.prosek);
+//console.log(sortedArrayFirstThree);
+
+// Task 4
+
+const citySkopje = studenti.filter((student) => student.grad === "Skopje");
+const skopjeTotalProsek = citySkopje.reduce(
+  (acc, curr) => acc + curr.prosek, 0);
+
+const cityBitola = studenti.filter((student) => student.grad === "Bitola");
+const bitolaTotalProsek = cityBitola.reduce(
+  (acc, curr) => acc + curr.prosek, 0);
+
+const cityKumanovo = studenti.filter((student) => student.grad === "Kumanovo");
+const kumanovoTotalProsek = cityKumanovo.reduce(
+  (acc, curr) => acc + curr.prosek, 0);
+
+const cityTetovo = studenti.filter((student) => student.grad === "Tetovo");
+const tetovoTotalProsek = cityTetovo.reduce(
+  (acc, curr) => acc + curr.prosek, 0);
+
+const cityOhrid = studenti.filter((student) => student.grad === "Ohrid");
+const ohridTotalProsek = cityOhrid.reduce((acc, curr) => acc + curr.prosek, 0);
+
+const cityStrumica = studenti.filter((student) => student.grad === "Strumica");
+const strumicaTotalProsek = cityStrumica.reduce(
+  (acc, curr) => acc + curr.prosek,
+  0
+);
+
+const arrayOfCities = [
+  skopjeTotalProsek,
+  bitolaTotalProsek,
+  kumanovoTotalProsek,
+  tetovoTotalProsek,
+  ohridTotalProsek,
+  strumicaTotalProsek,
+];
+const sortedArrayOfCities = arrayOfCities.sort((a, b) => a - b);
+
+//console.log(sortedArrayOfCities);
+
+// Task 5s
+
+const studentsNameEndsWithA = studenti.filter((student) => student.ime.slice(-1) === "a");
+
+const endsWithAnyOtherLetter = studenti.filter(
+  (student) => student.ime.slice(-1) != "a"
+);
+
+const totalProsekEndsWithA = studentsNameEndsWithA.reduce((acc, curr) => (acc + curr.prosek), 0)
+const totalOfOthers = endsWithAnyOtherLetter.reduce((acc, curr) => (acc + curr.prosek), 0)
+
+console.log("Vkupen prosek na studenti civo ime zavrsuva na bukvata a e: " + totalProsekEndsWithA + ", dodeka vkupen prosek za site ostanati studenti e: " + totalOfOthers);
